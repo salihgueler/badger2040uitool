@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badger2040 UI Design Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Badger2040 UI Design Tool</h1>
+        <p>Design for 296x128 e-ink display</p>
+    </header>
+
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="drawing">Canvas Drawing</button>
+            <button class="tab-btn" data-tab="profile">Profile Generator</button>
+            <button class="tab-btn" data-tab="badge">Badge Generator</button>
+            <button class="tab-btn" data-tab="code">Python Code</button>
+        </div>
+
+        <div class="tab-content">
+            <!-- Drawing Tab -->
+            <div id="drawing" class="tab-pane active">
+                <div class="tools-container">
+                    <div class="tool-group">
+                        <h3>Drawing Tools</h3>
+                        <button id="pencil-tool" class="tool-btn active">Pencil</button>
+                        <button id="line-tool" class="tool-btn">Line</button>
+                        <button id="rect-tool" class="tool-btn">Rectangle</button>
+                        <button id="circle-tool" class="tool-btn">Circle</button>
+                        <button id="text-tool" class="tool-btn">Text</button>
+                    </div>
+                    
+                    <div class="tool-group">
+                        <h3>Options</h3>
+                        <div class="option-row">
+                            <label for="line-thickness">Line Thickness:</label>
+                            <input type="range" id="line-thickness" min="1" max="10" value="2">
+                            <span id="thickness-value">2px</span>
+                        </div>
+                        <div class="option-row">
+                            <label for="color-picker">Color:</label>
+                            <div class="color-options">
+                                <button id="color-black" class="color-btn active"></button>
+                                <button id="color-white" class="color-btn"></button>
+                            </div>
+                        </div>
+                        <div class="option-row" id="text-options" style="display: none;">
+                            <label for="font-size">Font Size:</label>
+                            <input type="range" id="font-size" min="8" max="32" value="16">
+                            <span id="font-size-value">16px</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-group">
+                        <h3>Actions</h3>
+                        <button id="undo-btn">Undo</button>
+                        <button id="redo-btn">Redo</button>
+                        <button id="clear-btn">Clear Canvas</button>
+                        <div class="option-row">
+                            <label for="image-upload">Import Image:</label>
+                            <input type="file" id="image-upload" accept="image/*">
+                        </div>
+                        <button id="generate-drawing-code-btn">Generate Code</button>
+                    </div>
+                </div>
+                
+                <div class="canvas-container">
+                    <canvas id="drawing-canvas" width="296" height="128"></canvas>
+                </div>
+            </div>
+
+            <!-- Profile Generator Tab -->
+            <div id="profile" class="tab-pane">
+                <div class="generator-container">
+                    <div class="form-group">
+                        <h3>Profile Information</h3>
+                        <div class="input-group">
+                            <label for="profile-name">Name:</label>
+                            <input type="text" id="profile-name" placeholder="John Doe">
+                        </div>
+                        <div class="input-group">
+                            <label for="profile-company">Company:</label>
+                            <input type="text" id="profile-company" placeholder="ACME Inc.">
+                        </div>
+                        <div class="input-group">
+                            <label for="profile-title">Title:</label>
+                            <input type="text" id="profile-title" placeholder="Software Engineer">
+                        </div>
+                        <div class="input-group">
+                            <label for="profile-social">Social Handle:</label>
+                            <input type="text" id="profile-social" placeholder="@johndoe">
+                        </div>
+                        <div class="input-group">
+                            <label for="profile-url">QR Code URL:</label>
+                            <input type="text" id="profile-url" placeholder="https://example.com">
+                        </div>
+                        <div class="button-group">
+                            <button id="generate-profile-btn">Generate Profile</button>
+                            <button id="generate-profile-code-btn">Generate Code</button>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-container">
+                        <h3>Preview</h3>
+                        <canvas id="profile-canvas" width="296" height="128"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Badge Generator Tab -->
+            <div id="badge" class="tab-pane">
+                <div class="generator-container">
+                    <div class="form-group">
+                        <h3>Badge Information</h3>
+                        <div class="input-group">
+                            <label for="badge-company">Company Name:</label>
+                            <input type="text" id="badge-company" placeholder="ACME Inc.">
+                        </div>
+                        <div class="input-group">
+                            <label for="badge-name">Employee Name:</label>
+                            <input type="text" id="badge-name" placeholder="John Doe">
+                        </div>
+                        <div class="input-group">
+                            <label for="badge-detail1-text">Title:</label>
+                            <input type="text" id="badge-detail1-text" placeholder="Software Engineer">
+                        </div>
+                        <div class="input-group">
+                            <label for="badge-detail2-text">Email:</label>
+                            <input type="text" id="badge-detail2-text" placeholder="john.doe@example.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="badge-logo">Company Logo:</label>
+                            <input type="file" id="badge-logo" accept="image/*">
+                        </div>
+                        <div class="button-group">
+                            <button id="generate-badge-btn">Generate Badge</button>
+                            <button id="generate-badge-code-btn">Generate Code</button>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-container">
+                        <h3>Preview</h3>
+                        <canvas id="badge-canvas" width="296" height="128"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Python Code Tab -->
+            <div id="code" class="tab-pane">
+                <div class="code-container">
+                    <h3>Generated Python Code</h3>
+                    <div class="code-actions">
+                        <button id="copy-code-btn">Copy Code</button>
+                        <button id="download-code-btn">Download Code</button>
+                    </div>
+                    <pre><code id="python-code">
+# Generated Python code will appear here
+# Click "Generate Code" in any of the tool tabs to create code
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with love by using Amazon Q CLI deployed by salihgueler</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
