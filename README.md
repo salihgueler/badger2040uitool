@@ -1,6 +1,6 @@
 # Badger2040 UI Design Tool
 
-A web-based UI design tool for the [Badger2040](https://learn.pimoroni.com/article/getting-started-with-badger-2040#micropython-and-badger-2040) e-ink display (296x128 pixels).
+A web-based UI design tool for the [Badger2040](https://learn.pimoroni.com/article/getting-started-with-badger-2040#micropython-and-badger-2040) e-ink display (296x128 pixels). Built fully with Amazon [Q Dev CLI](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-installing.html?trk=8d3c54c2-d407-4b0c-b4b4-9e0c388fe771&sc_channel=el)'s chat capability.
 
 ## Features
 
